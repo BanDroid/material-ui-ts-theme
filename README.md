@@ -10,7 +10,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped using [`create-nex
 You only need to modify themes in [theme.tsx](./src/config/theme.tsx#L25-L61):
 
 1. add theme name in [here](./src/config/theme.tsx#L25).
-2. then create your theme object in [this variable](./src/config/theme.tsx#L32).
+2. then create your theme object in [this variable](./src/config/theme.tsx#L43-L74).
 3. toggle or change theme using `useCustomTheme` from `"@/config/theme"`, see example [here](./src/app/toggle-mode.tsx).
 
 ## Learn more
