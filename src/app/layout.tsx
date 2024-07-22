@@ -1,5 +1,8 @@
 import * as React from "react";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
+
+import "./globals.css";
+
 import { CustomThemeProvider } from "@/config/theme";
 import AppBar from "@/components/appbar";
 

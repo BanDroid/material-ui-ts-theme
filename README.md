@@ -3,15 +3,19 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped using [`create-next-app`](https://github.com/vercel/next.js/tree/HEAD/packages/create-next-app) with Material UI installed and already made theme configuration for easier theming in your app.
 
 > [!NOTE]  
-> This example only change color theme, but not whole ThemeOptions, so if you want to modify other than palette, you have to modify it [here](./src/config/theme.tsx#L109-L117).
+> This example only change color theme, but not whole ThemeOptions, so if you want to modify other than palette, you have to modify it [here](./src/config/theme.tsx#L77-L231).
 
 ## How to use
 
 You only need to modify themes in [theme.tsx](./src/config/theme.tsx#L25-L61):
 
 1. add theme name in [here](./src/config/theme.tsx#L25).
-2. then create your theme object in [this variable](./src/config/theme.tsx#L43-L74).
+2. then create your theme object in [this variable](./src/config/theme.tsx#L43-L76).
 3. toggle or change theme using `useCustomTheme` from `"@/config/theme"`, see example [here](./src/app/toggle-mode.tsx).
+
+## TODO
+
+- adapt material 3 (at least for now, until official MUI release v7 stable)
 
 ## Learn more
 

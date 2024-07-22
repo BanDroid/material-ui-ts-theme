@@ -11,7 +11,7 @@ import Tab from "@mui/material/Tab";
 export default function AppBar() {
   return (
     <MuiAppBar position="sticky">
-      <Toolbar>
+      <Toolbar sx={{ paddingBottom: 0 }}>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           News
         </Typography>

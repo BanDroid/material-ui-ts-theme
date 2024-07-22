@@ -47,6 +47,7 @@ const themes: CustomThemeOptions = {
       },
       secondary: {
         main: "#078ad0",
+        light: "#078ad033",
       },
       info: {
         main: "#0288d1",
@@ -62,6 +63,7 @@ const themes: CustomThemeOptions = {
       },
       secondary: {
         main: "#078ad0",
+        light: "#078ad033",
       },
       info: {
         main: "#0288d1",
@@ -81,6 +83,14 @@ const themes: CustomThemeOptions = {
     borderRadius: defaultBorderRadius,
   },
   components: {
+    MuiDrawer: {
+      styleOverrides: {
+        paper: {
+          borderTopRightRadius: defaultBorderRadius,
+          borderBottomRightRadius: defaultBorderRadius,
+        },
+      },
+    },
     MuiAppBar: {
       defaultProps: {
         color: "inherit",
@@ -97,6 +107,8 @@ const themes: CustomThemeOptions = {
         root: {
           flexWrap: "wrap",
           gap: 2,
+          paddingTop: "1rem",
+          paddingBottom: "1rem",
         },
       },
     },
@@ -116,6 +128,48 @@ const themes: CustomThemeOptions = {
         },
       },
     },
+    MuiBottomNavigation: {
+      defaultProps: {
+        sx: {
+          "& .MuiBottomNavigationAction-root > .MuiSvgIcon-root": {
+            width: "80%",
+            maxWidth: "4rem",
+            py: 0.25,
+            mb: 1,
+            borderRadius: defaultBorderRadius,
+            transition: "background 150ms",
+          },
+          "& .MuiBottomNavigationAction-root.Mui-selected > .MuiSvgIcon-root": {
+            bgcolor: "secondary.light",
+            color: "text.primary",
+          },
+          "& .MuiBottomNavigationAction-root:active > .MuiSvgIcon-root": {
+            bgcolor: "secondary.light",
+          },
+          "& .MuiBottomNavigationAction-root > .MuiBottomNavigationAction-label":
+            { fontSize: "1rem" },
+          "& .MuiBottomNavigationAction-root.Mui-selected > .MuiBottomNavigationAction-label":
+            {
+              color: "text.primary",
+              fontSize: "1rem",
+            },
+          "& .MuiBottomNavigationAction-root:active > .MuiBottomNavigationAction-label":
+            {},
+        },
+      },
+    },
+    MuiBottomNavigationAction: {
+      defaultProps: {
+        disableRipple: true,
+      },
+    },
+    MuiDialog: {
+      styleOverrides: {
+        paper: {
+          borderRadius: defaultBorderRadius,
+        },
+      },
+    },
     MuiButton: {
       defaultProps: {
         disableElevation: true,
@@ -124,6 +178,13 @@ const themes: CustomThemeOptions = {
         root: {
           textTransform: "none",
           borderRadius: defaultBorderRadius * 3,
+        },
+      },
+    },
+    MuiFab: {
+      styleOverrides: {
+        root: {
+          borderRadius: defaultBorderRadius,
         },
       },
     },
@@ -160,7 +221,7 @@ const themes: CustomThemeOptions = {
         track: {
           borderRadius: 13,
           border: "1px solid #bdbdbd",
-          backgroundColor: "#fafafa",
+          backgroundColor: "rgba(250,250,250,0.5)",
           opacity: 1,
           transition:
             "background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",

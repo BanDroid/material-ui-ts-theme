@@ -4,6 +4,8 @@ import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
+import Fab from "@mui/material/Fab";
+import EditIcon from "@mui/icons-material/Edit";
 import Typography from "@mui/material/Typography";
 
 const bull = (
@@ -36,6 +38,10 @@ export default function BasicCard() {
       </CardContent>
       <CardActions>
         <Button>Learn more</Button>
+        <div style={{ flex: 1 }}></div>
+        <Fab color="secondary">
+          <EditIcon />
+        </Fab>
       </CardActions>
     </Card>
   );

@@ -1,0 +1,15 @@
+* {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
+
+input,
+textarea,
+code,
+pre,
+blockquote {
+  user-select: initial;
+  -webkit-user-select: initial;
+  -moz-user-select: initial;
+}
