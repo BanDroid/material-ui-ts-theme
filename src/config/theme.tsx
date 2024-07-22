@@ -1,14 +1,13 @@
 "use client";
-import { Roboto } from "next/font/google";
+import { Inter } from "next/font/google";
 import {
   createTheme,
   ThemeProvider as MaterialUIThemeProvider,
   PaletteOptions,
+  ThemeOptions,
 } from "@mui/material/styles";
-import { PaletteMode } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { amber, deepOrange, grey, lightBlue } from "@mui/material/colors";
 import {
   createContext,
   ReactNode,
@@ -22,40 +21,151 @@ import {
  * themes could have custom theme like blue or any kind of modification theme you want,
  * but for mode only reflect to light or dark.
  */
-type Theme = PaletteMode | "blue" | "system";
+type PaletteMode = "light" | "dark";
+type Theme = "light" | "dark" | "system";
 
-const roboto = Roboto({
+const inter = Inter({
   weight: ["300", "400", "500", "700"],
   subsets: ["latin"],
-  display: "swap",
 });
-const themes: {
+
+const defaultBorderRadius = 20;
+
+type CustomPaletteOptions = {
   [key: string]: PaletteOptions;
-} = {
-  light: {
-    primary: amber,
-    divider: amber[200],
-    text: {
-      primary: grey[900],
-      secondary: grey[800],
+};
+type CustomThemeOptions =
+  | {
+      palette: CustomPaletteOptions;
+    } & ThemeOptions;
+
+const themes: CustomThemeOptions = {
+  palette: {
+    light: {
+      primary: {
+        main: "#334ed8",
+      },
+      secondary: {
+        main: "#078ad0",
+      },
+      info: {
+        main: "#0288d1",
+      },
+      background: {
+        default: "#F8F8F8",
+        paper: "#FFFFFF",
+      },
+    },
+    dark: {
+      primary: {
+        main: "#334ed8",
+      },
+      secondary: {
+        main: "#078ad0",
+      },
+      info: {
+        main: "#0288d1",
+      },
+      background: {
+        default: "#010101",
+        paper: "#010101",
+      },
     },
   },
-  dark: {
-    primary: deepOrange,
-    divider: deepOrange[700],
-    background: {
-      default: deepOrange[900],
-      paper: deepOrange[900],
-    },
-    text: {
-      primary: "#fff",
-      secondary: grey[500],
-    },
+  typography: {
+    fontFamily: inter.style.fontFamily,
+    fontSize: 14,
   },
-  blue: {
-    primary: lightBlue,
-    background: {
-      default: lightBlue[900],
+  spacing: 8,
+  shape: {
+    borderRadius: defaultBorderRadius,
+  },
+  components: {
+    MuiAppBar: {
+      defaultProps: {
+        color: "inherit",
+        elevation: 0,
+        position: "sticky",
+        sx: { top: 0 },
+      },
+    },
+    MuiToolbar: {
+      defaultProps: {
+        variant: "dense",
+      },
+      styleOverrides: {
+        root: {
+          flexWrap: "wrap",
+          gap: 2,
+        },
+      },
+    },
+    MuiTabs: {
+      styleOverrides: {
+        indicator: {
+          height: 4,
+          borderTopLeftRadius: defaultBorderRadius,
+          borderTopRightRadius: defaultBorderRadius,
+        },
+      },
+    },
+    MuiTab: {
+      styleOverrides: {
+        root: {
+          textTransform: "none",
+        },
+      },
+    },
+    MuiButton: {
+      defaultProps: {
+        disableElevation: true,
+      },
+      styleOverrides: {
+        root: {
+          textTransform: "none",
+          borderRadius: defaultBorderRadius * 3,
+        },
+      },
+    },
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          borderRadius: defaultBorderRadius,
+        },
+      },
+    },
+    MuiSwitch: {
+      styleOverrides: {
+        root: {
+          width: 46,
+          height: 27,
+          padding: 0,
+          margin: 8,
+        },
+        switchBase: {
+          padding: 1,
+          "&$checked, &$colorPrimary$checked, &$colorSecondary$checked": {
+            transform: "translateX(16px)",
+            color: "#fff",
+            "& + $track": {
+              opacity: 1,
+              border: "none",
+            },
+          },
+        },
+        thumb: {
+          width: 24,
+          height: 24,
+        },
+        track: {
+          borderRadius: 13,
+          border: "1px solid #bdbdbd",
+          backgroundColor: "#fafafa",
+          opacity: 1,
+          transition:
+            "background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
+        },
+      },
     },
   },
 };
@@ -107,12 +217,10 @@ export function CustomThemeProvider({ children }: { children: ReactNode }) {
   );
   const customTheme = useMemo(() => {
     return createTheme({
+      ...themes,
       palette: {
+        ...themes.palette[theme],
         mode,
-        ...themes[theme],
-      },
-      typography: {
-        fontFamily: roboto.style.fontFamily,
       },
     });
   }, [mode, theme]);

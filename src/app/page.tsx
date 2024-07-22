@@ -7,6 +7,7 @@ import NextLink from "next/link";
 import ProTip from "@/components/ProTip";
 import Copyright from "@/components/Copyright";
 import ToggleMode from "./toggle-mode";
+import BasicCard from "@/components/card";
 
 export default function Home() {
   return (
@@ -27,6 +28,7 @@ export default function Home() {
         <Link href="/about" color="secondary" component={NextLink}>
           Go to the about page
         </Link>
+        <BasicCard />
         <ProTip />
         <Copyright />
       </Box>

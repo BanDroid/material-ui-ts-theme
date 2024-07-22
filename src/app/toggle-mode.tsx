@@ -26,7 +26,10 @@ export default function ToggleMode() {
       <IconButton
         sx={{ ml: 1 }}
         onClick={() =>
-          toggleColorMode("blue", currentMode !== "light" ? "light" : "dark")
+          toggleColorMode(
+            currentTheme !== "light" ? "light" : "dark",
+            currentMode !== "light" ? "light" : "dark"
+          )
         }
         color="inherit"
       >
