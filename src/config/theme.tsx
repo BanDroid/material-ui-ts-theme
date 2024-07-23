@@ -5,9 +5,11 @@ import {
   ThemeProvider as MaterialUIThemeProvider,
   PaletteOptions,
   ThemeOptions,
+  alpha,
 } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { indigo, lightBlue } from "@mui/material/colors";
 import {
   createContext,
   ReactNode,
@@ -43,7 +45,10 @@ const themes: CustomThemeOptions = {
   palette: {
     light: {
       primary: {
-        main: "#334ed8",
+        dark: indigo[700],
+        main: indigo[400],
+        light: indigo[200],
+        contrastText: indigo[50],
       },
       secondary: {
         main: "#078ad0",
@@ -59,7 +64,10 @@ const themes: CustomThemeOptions = {
     },
     dark: {
       primary: {
-        main: "#334ed8",
+        dark: indigo[700],
+        main: indigo[500],
+        light: indigo[300],
+        contrastText: indigo[50],
       },
       secondary: {
         main: "#078ad0",
@@ -70,13 +78,12 @@ const themes: CustomThemeOptions = {
       },
       background: {
         default: "#010101",
-        paper: "#010101",
+        paper: "#121212",
       },
     },
   },
   typography: {
     fontFamily: inter.style.fontFamily,
-    fontSize: 14,
   },
   spacing: 8,
   shape: {
@@ -131,27 +138,42 @@ const themes: CustomThemeOptions = {
     MuiBottomNavigation: {
       defaultProps: {
         sx: {
+          width: "100%",
+          height: "auto",
+          minHeight: "55px",
+          alignItems: "center",
+          justifyContent: "space-evenly",
+          "& .MuiBottomNavigationAction-root.Mui-selected": {
+            transition: "all 0ms !important",
+          },
           "& .MuiBottomNavigationAction-root > .MuiSvgIcon-root": {
             width: "80%",
-            maxWidth: "4rem",
+            maxWidth: "3.5rem",
             py: 0.25,
             mb: 1,
             borderRadius: defaultBorderRadius,
-            transition: "background 150ms",
+            transition: "background 100ms",
+            color: (theme) => alpha(theme.palette.text.primary, 0.5),
           },
           "& .MuiBottomNavigationAction-root.Mui-selected > .MuiSvgIcon-root": {
-            bgcolor: "secondary.light",
-            color: "text.primary",
+            // bgcolor: "secondary.light",
+            bgcolor: (theme) => alpha(theme.palette.secondary.main, 0.5),
+            color: (theme) => theme.palette.text.primary,
           },
           "& .MuiBottomNavigationAction-root:active > .MuiSvgIcon-root": {
-            bgcolor: "secondary.light",
+            bgcolor: (theme) => alpha(theme.palette.secondary.main, 0.5),
           },
           "& .MuiBottomNavigationAction-root > .MuiBottomNavigationAction-label":
-            { fontSize: "1rem" },
+            {
+              color: (theme) => alpha(theme.palette.text.primary, 0.5),
+              fontSize: (theme) => theme.typography.button,
+              textTransform: "none",
+            },
           "& .MuiBottomNavigationAction-root.Mui-selected > .MuiBottomNavigationAction-label":
             {
-              color: "text.primary",
-              fontSize: "1rem",
+              color: (theme) => theme.palette.text.primary,
+              fontSize: (theme) => theme.typography.button,
+              textTransform: "none",
             },
           "& .MuiBottomNavigationAction-root:active > .MuiBottomNavigationAction-label":
             {},
@@ -161,12 +183,15 @@ const themes: CustomThemeOptions = {
     MuiBottomNavigationAction: {
       defaultProps: {
         disableRipple: true,
+        sx: {
+          py: 2,
+        },
       },
     },
     MuiDialog: {
       styleOverrides: {
         paper: {
-          borderRadius: defaultBorderRadius,
+          borderRadius: defaultBorderRadius * 1.5,
         },
       },
     },
@@ -192,6 +217,24 @@ const themes: CustomThemeOptions = {
       styleOverrides: {
         root: {
           borderRadius: defaultBorderRadius,
+        },
+      },
+    },
+    MuiList: {
+      defaultProps: {
+        sx: {
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "stretch",
+          gap: 1,
+        },
+      },
+    },
+    MuiListItemButton: {
+      styleOverrides: {
+        root: {
+          overflow: "hidden",
+          borderRadius: defaultBorderRadius * 2,
         },
       },
     },
