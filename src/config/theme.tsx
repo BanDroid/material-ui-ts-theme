@@ -24,7 +24,7 @@ import {
  * but for mode only reflect to light or dark.
  */
 type PaletteMode = "light" | "dark";
-type Theme = "light" | "dark" | "system";
+type Theme = "light" | "dark" | "system" | "ocean";
 
 const inter = Inter({
   weight: ["300", "400", "500", "700"],
@@ -44,41 +44,47 @@ type CustomThemeOptions =
 const themes: CustomThemeOptions = {
   palette: {
     light: {
-      primary: {
-        dark: indigo[700],
-        main: indigo[400],
-        light: indigo[200],
-        contrastText: indigo[50],
-      },
-      secondary: {
-        main: "#078ad0",
-        light: "#078ad033",
-      },
-      info: {
-        main: "#0288d1",
-      },
+      // primary: {
+      //   dark: indigo[700],
+      //   main: indigo[400],
+      //   light: indigo[200],
+      //   contrastText: indigo[50],
+      // },
+      // secondary: {
+      //   main: "#078ad0",
+      //   light: "#078ad033",
+      // },
+      // info: {
+      //   main: "#0288d1",
+      // },
       background: {
         default: "#F8F8F8",
         paper: "#FFFFFF",
       },
     },
     dark: {
-      primary: {
-        dark: indigo[700],
-        main: indigo[500],
-        light: indigo[300],
-        contrastText: indigo[50],
-      },
-      secondary: {
-        main: "#078ad0",
-        light: "#078ad033",
-      },
-      info: {
-        main: "#0288d1",
-      },
+      // primary: {
+      //   dark: indigo[700],
+      //   main: indigo[500],
+      //   light: indigo[300],
+      //   contrastText: indigo[50],
+      // },
+      // secondary: {
+      //   main: "#078ad0",
+      //   light: "#078ad033",
+      // },
+      // info: {
+      //   main: "#0288d1",
+      // },
       background: {
         default: "#010101",
         paper: "#121212",
+      },
+    },
+    ocean: {
+      background: {
+        default: lightBlue[50],
+        paper: lightBlue[100],
       },
     },
   },
@@ -156,12 +162,11 @@ const themes: CustomThemeOptions = {
             color: (theme) => alpha(theme.palette.text.primary, 0.5),
           },
           "& .MuiBottomNavigationAction-root.Mui-selected > .MuiSvgIcon-root": {
-            // bgcolor: "secondary.light",
-            bgcolor: (theme) => alpha(theme.palette.secondary.main, 0.5),
+            bgcolor: (theme) => alpha(theme.palette.secondary.main, 0.2),
             color: (theme) => theme.palette.text.primary,
           },
           "& .MuiBottomNavigationAction-root:active > .MuiSvgIcon-root": {
-            bgcolor: (theme) => alpha(theme.palette.secondary.main, 0.5),
+            bgcolor: (theme) => alpha(theme.palette.secondary.main, 0.2),
           },
           "& .MuiBottomNavigationAction-root > .MuiBottomNavigationAction-label":
             {
