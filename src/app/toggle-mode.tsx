@@ -5,7 +5,7 @@ import IconButton from "@mui/material/IconButton";
 import Box from "@mui/material/Box";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
-import { useCustomTheme } from "@/config/theme";
+import { useCustomTheme } from "@/contexts/theme-provider";
 
 export default function ToggleMode() {
   const { toggleColorMode, currentMode, currentTheme } = useCustomTheme();
@@ -42,11 +42,11 @@ export default function ToggleMode() {
         sx={{
           mb: 2,
         }}
-        onClick={() => toggleColorMode("ocean", "light")}
+        onClick={() => toggleColorMode("fuwa", "light")}
         variant="contained"
         color="primary"
       >
-        Toggle Ocean Theme
+        Toggle Fuwa Theme
       </Button>
     </>
   );

@@ -53,7 +53,7 @@ export default function BasicCard() {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button>Learn more</Button>
+          <Button color="inherit">Learn more</Button>
           <div style={{ flex: 1 }}></div>
           <Fab color="secondary" onClick={handleClickOpen}>
             <EditIcon />

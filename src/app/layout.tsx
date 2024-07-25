@@ -1,9 +1,9 @@
 import * as React from "react";
-import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
+import { themes } from "@/config/theme";
 
 import "./globals.css";
 
-import { CustomThemeProvider } from "@/config/theme";
+import CustomThemeProvider from "@/contexts/theme-provider";
 import AppBar from "@/components/appbar";
 
 export const metadata = {
@@ -14,12 +14,10 @@ export default function RootLayout(props: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <AppRouterCacheProvider options={{ enableCssLayer: true }}>
-          <CustomThemeProvider>
-            <AppBar />
-            {props.children}
-          </CustomThemeProvider>
-        </AppRouterCacheProvider>
+        <CustomThemeProvider themes={themes}>
+          <AppBar />
+          {props.children}
+        </CustomThemeProvider>
       </body>
     </html>
   );
