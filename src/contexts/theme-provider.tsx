@@ -303,12 +303,10 @@ export default function CustomThemeProvider({
       },
     });
     const generatedPalette: any = {};
-    for (const [name, value] of Object.entries(themes.palette[theme])) {
-      if (name && value.main) {
+    for (const [name, colors] of Object.entries(themes.palette[theme])) {
+      if (name && colors.main) {
         generatedPalette[name] = configuredTheme.palette.augmentColor({
-          color: {
-            main: value.main,
-          },
+          color: colors,
         });
       }
     }
