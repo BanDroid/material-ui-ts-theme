@@ -1,7 +1,7 @@
 "use client";
 import * as React from "react";
 import Box from "@mui/material/Box";
-import Drawer from "@mui/material/Drawer";
+import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import Button from "@mui/material/Button";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
@@ -60,9 +60,13 @@ export default function TemporaryDrawer() {
       <Button variant="contained" onClick={toggleDrawer(true)}>
         Open drawer
       </Button>
-      <Drawer open={open} onClose={toggleDrawer(false)}>
+      <SwipeableDrawer
+        open={open}
+        onClose={toggleDrawer(false)}
+        onOpen={toggleDrawer(true)}
+      >
         {DrawerList}
-      </Drawer>
+      </SwipeableDrawer>
     </div>
   );
 }

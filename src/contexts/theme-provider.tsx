@@ -53,11 +53,21 @@ const defaultThemes: CustomThemeOptions = {
   },
   components: {
     MuiDrawer: {
+      defaultProps: {
+        ModalProps: {
+          keepMounted: true,
+        },
+      },
       styleOverrides: {
         paper: {
           borderTopRightRadius: defaultBorderRadius,
           borderBottomRightRadius: defaultBorderRadius,
         },
+      },
+    },
+    MuiSwipeableDrawer: {
+      defaultProps: {
+        disableBackdropTransition: true,
       },
     },
     MuiAppBar: {
@@ -122,7 +132,7 @@ const defaultThemes: CustomThemeOptions = {
             color: (theme) => theme.palette.text.primary,
           },
           "& .MuiBottomNavigationAction-root:active > .MuiSvgIcon-root": {
-            bgcolor: (theme) => alpha(theme.palette.secondary.main, 0.2),
+            bgcolor: (theme) => alpha(theme.palette.secondary.light, 0.2),
           },
           "& .MuiBottomNavigationAction-root > .MuiBottomNavigationAction-label":
             {
@@ -303,11 +313,16 @@ export default function CustomThemeProvider({
       },
     });
     const generatedPalette: any = {};
+    if (!themes.palette[theme]) return configuredTheme;
     for (const [name, colors] of Object.entries(themes.palette[theme])) {
       if (name && typeof colors !== "undefined") {
-        generatedPalette[name] = configuredTheme.palette.augmentColor({
-          color: colors,
-        });
+        try {
+          generatedPalette[name] = configuredTheme.palette.augmentColor({
+            color: colors,
+          });
+        } catch (e: unknown) {
+          continue;
+        }
       }
     }
     return createTheme(configuredTheme, {

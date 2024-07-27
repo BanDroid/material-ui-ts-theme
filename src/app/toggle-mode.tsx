@@ -18,7 +18,7 @@ export default function ToggleMode() {
           alignItems: "center",
           justifyContent: "center",
           bgcolor: "background.default",
-          color: "text.primary",
+          color: "secondary.light",
           // borderRadius: 1,
           p: 3,
         }}
@@ -38,16 +38,6 @@ export default function ToggleMode() {
           {currentMode === "dark" ? <Brightness7Icon /> : <Brightness4Icon />}
         </IconButton>
       </Box>
-      <Button
-        sx={{
-          mb: 2,
-        }}
-        onClick={() => toggleColorMode("fuwa", "light")}
-        variant="contained"
-        color="primary"
-      >
-        Toggle Fuwa Theme
-      </Button>
     </>
   );
 }
