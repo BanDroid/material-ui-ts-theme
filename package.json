@@ -1,6 +1,11 @@
 {
-  "name": "material-ui-nextjs-ts",
+  "name": "material-ui-nextjs-ts-m3",
   "version": "5.0.0",
+  "author": {
+    "name": "Fitrah Nuno Syahbani",
+    "email": "dbbhuh5@gmail.com",
+    "url": "https://github.com/BanDroid"
+  },
   "private": true,
   "scripts": {
     "dev": "next dev",
