@@ -113,26 +113,38 @@ const defaultThemes: CustomThemeOptions = {
           width: "100%",
           height: "auto",
           minHeight: "55px",
+          position: "relative",
           alignItems: "center",
           justifyContent: "space-evenly",
-          "& .MuiBottomNavigationAction-root.Mui-selected": {
-            transition: "all 0ms !important",
+          "& .MuiBottomNavigationAction-root::before": {
+            content: "''",
+            position: "absolute",
+            top: 16,
+            left: "50%",
+            transform: "translateX(-50%)",
+            width: "0rem",
+            height: "1.5rem",
+            borderRadius: defaultBorderRadius,
+            transition: "width .3s",
           },
+          "& .MuiBottomNavigationAction-root.Mui-selected::before": {
+            width: "3.5rem",
+            bgcolor: (theme) => alpha(theme.palette.secondary.main, 0.2),
+          },
+          "& .MuiBottomNavigationAction-root:not(.Mui-selected):active::before":
+            {
+              width: "3.5rem",
+              bgcolor: (theme) => alpha(theme.palette.secondary.main, 0.2),
+            },
           "& .MuiBottomNavigationAction-root > .MuiSvgIcon-root": {
-            width: "80%",
+            color: (theme) => alpha(theme.palette.text.primary, 0.5),
+            width: "100%",
             maxWidth: "3.5rem",
             py: 0.25,
             mb: 1,
-            borderRadius: defaultBorderRadius,
-            transition: "background 100ms",
-            color: (theme) => alpha(theme.palette.text.primary, 0.5),
           },
           "& .MuiBottomNavigationAction-root.Mui-selected > .MuiSvgIcon-root": {
-            bgcolor: (theme) => alpha(theme.palette.secondary.main, 0.2),
             color: (theme) => theme.palette.text.primary,
-          },
-          "& .MuiBottomNavigationAction-root:active > .MuiSvgIcon-root": {
-            bgcolor: (theme) => alpha(theme.palette.secondary.light, 0.2),
           },
           "& .MuiBottomNavigationAction-root > .MuiBottomNavigationAction-label":
             {
